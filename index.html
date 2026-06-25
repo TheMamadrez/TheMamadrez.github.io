@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>برای النا</title>
+    <title>سورپرایز ویژه</title>
     <style>
         body {
             background: #ffe6f0;
@@ -22,11 +22,34 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             text-align: center;
             max-width: 400px;
+            display: none;
+        }
+        .card.active {
+            display: block;
         }
         h1 {
             color: #d6336c;
             font-size: 2.5em;
             margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .btn {
+            background: #d6336c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #a02050;
+            transform: scale(1.05);
         }
         img {
             max-width: 100%;
@@ -37,10 +60,36 @@
 </head>
 <body>
 
-<div class="card">
+<!-- صفحه اول -->
+<div class="card active" id="page1">
+    <h1>🌸 سلام النا!</h1>
+    <p>میخوای بیای جلوتر؟</p>
+    <button class="btn" onclick="nextPage(2)">آره 😍</button>
+</div>
+
+<!-- صفحه دوم -->
+<div class="card" id="page2">
+    <h1>🤔 مطمئنی؟</h1>
+    <p>دیگه برنمیگردی!</p>
+    <button class="btn" onclick="nextPage(3)">آره، کاملاً مطمئنم!</button>
+</div>
+
+<!-- صفحه سوم (نهایی) -->
+<div class="card" id="page3">
     <h1>💖 دوست دارم النا 💖</h1>
     <img src="https://i.pinimg.com/736x/1b/6c/c7/1b6cc755f6893dd00a229bccd07ab043.jpg" alt="عکس النا">
 </div>
+
+<script>
+function nextPage(pageNumber) {
+    // همه صفحات رو مخفی کن
+    document.querySelectorAll('.card').forEach(card => {
+        card.classList.remove('active');
+    });
+    // صفحه مورد نظر رو نشون بده
+    document.getElementById('page' + pageNumber).classList.add('active');
+}
+</script>
 
 </body>
 </html>
